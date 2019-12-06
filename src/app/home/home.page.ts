@@ -9,4 +9,15 @@ export class HomePage {
 
   constructor() {}
 
+  onDirectionalBtnTap(direction) {
+    console.log(direction)
+  }
+
+  onOptionBtnTap(option) {
+    console.log(option)
+  }
+
+  onControlBtnTap(control) {
+    console.log(control)
+  }
 }

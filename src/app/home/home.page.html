@@ -1,20 +1,40 @@
 <ion-content>
-  <!-- <div class="ion-padding"> -->
+  <div class="container">
     <div class="joystick">
       <div class="joystick__left">
         <div class="joystick__directional">
           <div class="directional-btn-group">
-            <div class="directional-btn up"></div>
-            <div class="directional-btn down"></div>
+            <div class="directional-btn up" tappable (click)="onDirectionalBtnTap('UP')"></div>
+            <div class="directional-btn down" tappable (click)="onDirectionalBtnTap('DOWN')"></div>
           </div>
           <div class="directional-btn-group">
-            <div class="directional-btn left"></div>
-            <div class="directional-btn right"></div>
+            <div class="directional-btn left" tappable (click)="onDirectionalBtnTap('LEFT')"></div>
+            <div class="directional-btn right" tappable (click)="onDirectionalBtnTap('RIGHT')"></div>
           </div>
         </div>
       </div>
-      <div class="joystick__middle"></div>
-      <div class="joystick__right"></div>
+      <div class="joystick__middle">
+        <div class="option-btn-wrapper">
+          <div class="option-btn" tappable (click)="onOptionBtnTap('SELECT')"></div>
+          <div class="option-label" tappable >SELECT</div>
+        </div>
+        <div class="option-btn-wrapper">
+          <div class="option-btn" tappable (click)="onOptionBtnTap('START')"></div>
+          <div class="option-label">START</div>
+        </div>
+      </div>
+      <div class="joystick__right">
+        <div class="controls-btn">
+          <div class="controls-btn__group">
+            <div class="control-btn" data-label="Y" tappable (click)="onControlBtnTap('Y')"></div>
+            <div class="control-btn" data-label="X" (click)="onControlBtnTap('X')"></div>
+          </div>
+          <div class="controls-btn__group">
+            <div class="control-btn" data-label="B" tappable (click)="onControlBtnTap('B')"></div>
+            <div class="control-btn" data-label="A" (click)="onControlBtnTap('A')"></div>
+          </div>
+        </div>
+      </div>
     </div>
-  <!-- </div> -->
+  </div>
 </ion-content>

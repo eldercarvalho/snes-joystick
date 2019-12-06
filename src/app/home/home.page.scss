@@ -1,19 +1,17 @@
-ion-content {
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    // background: url('../../assets/bg.jpg') center center no-repeat;
+    background-size: cover;
 }
 .joystick {
     display: flex;
-    // align-items: center;
-    // height: 100%;
     justify-content: space-between;
-    // padding: 0 16px;
-    height: 260px;
-    background: #c8c9ce;
-    border-radius: 130px;
     
     .joystick__left {
+        position: relative;
         width: 300px;
         height: 300px;
         background: #c8c9ce;
@@ -22,6 +20,17 @@ ion-content {
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
+        // z-index: 1;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 300px;
+            height: 260px;
+            background: #c8c9ce;
+        }
         
         .joystick__directional {
             position: relative;
@@ -30,20 +39,36 @@ ion-content {
             border: 1px solid #BBB;
             border-radius: 50%;
             box-shadow: inset 0px 0px 10px rgba(#000, .1);
+
+            &:after {
+                content: '';
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                box-shadow: inset 0px 0px 10px rgba(#000, .4);
+                z-index: 2;
+            }
             
             .directional-btn-group {
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 display: flex;
-                // background: #444549;
+                background: #444549;
                 border-radius: 5px;
+                // box-shadow: 0px 10px 10px rgba(#000, .4);
             }
+
             .directional-btn-group:nth-of-type(1) {
                 height: 125px;
                 flex-direction: column;
                 justify-content: space-between;
                 transform: translate(-50%, -50%);
+                z-index: 1;
             }
 
             .directional-btn-group:nth-of-type(2) {
@@ -57,52 +82,64 @@ ion-content {
                 background: #444549;
                 border-radius: 5px;
                 position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .directional-btn:after {
                 content: '';
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%,-50%);
+                position: relative;
+                // top: 50%;
+                // left: 50%;
+                // transform: translate(-50%,-50%);
             }
 
             .up,.down {
-                width: 40px;
-                height: 50px;
+                width: 42px;
+                height: 42px;
             }
 
             .left,.right {
-                width: 50px;
-                height: 40px;
+                width: 42px;
+                height: 42px;
             }
 
-            .up:after {
-                border-bottom: 20px solid #222;
-                border-left: 15px solid transparent;
-                border-right: 15px solid transparent;
+            .up {
+                &:after {
+                    border-bottom: 20px solid #222;
+                    border-left: 15px solid transparent;
+                    border-right: 15px solid transparent;
+                    bottom: 3px;
+                }
             }
 
             .down:after {
                 border-top: 20px solid #222;
                 border-left: 15px solid transparent;
                 border-right: 15px solid transparent;
+                top: 3px;
             }
 
-            .left:after {
-                border-right: 20px solid #222;
-                border-top: 15px solid transparent;
-                border-bottom: 15px solid transparent;
+            .left {
+                &:after {
+                    border-right: 20px solid #222;
+                    border-top: 15px solid transparent;
+                    border-bottom: 15px solid transparent;
+                    right: 3px;
+                }
             }
 
             .right:after {
                 border-left: 20px solid #222;
                 border-top: 15px solid transparent;
                 border-bottom: 15px solid transparent;
+                left: 3px;
             }
         }
     }
     .joystick__right {
+        position: relative;
         width: 300px;
         height: 300px;
         background: #c8c9ce;
@@ -111,13 +148,116 @@ ion-content {
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
+        // z-index: 1;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 50%;
+            width: 300px;
+            height: 260px;
+            background: #c8c9ce;
+        }
+
+        .controls-btn {
+            position: relative;
+            width: 270px;
+            height: 270px;
+            border-radius: 50%;
+            background: #8a899b;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .controls-btn__group {
+            position: relative;
+            width: 160px;
+            display: flex;
+            justify-content: space-between;
+            background: #c8c9ce;
+            padding: 5px;
+            border-radius: 33px;
+            transform: rotate(-40deg);
+
+            .control-btn:nth-of-type(1) {
+                &:after {
+                    right: calc(100% + 10px);
+                }
+            }
+
+            .control-btn:nth-of-type(2) {
+                &:after {
+                    left: calc(100% + 10px);
+                }
+            }
+        }
+
+        .controls-btn__group:nth-of-type(1) {
+            margin-bottom: 10px;
+            right: 26px;
+
+            .control-btn {
+                background: #a3a0cd;
+            }
+        }
+
+        .controls-btn__group:nth-of-type(2) { 
+            left: 26px;
+
+            .control-btn {
+                background: #4d3887;
+                position: relative;
+            }
+        }
+
+        .control-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            
+            &:after {
+                content: attr(data-label);
+                position: absolute;
+                color: #FFF;
+                font-size: 20px;
+                top: 50%;
+                transform: translateY(-50%) rotate(40deg);
+            }
+        }
     }
 
     .joystick__middle {
-        width: 100%;
-        // flex-shrink: 0;
+        position: relative;
+        width: 120px;
         height: 260px;
         background: #c8c9ce;
-        position: relative;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding: 0 0px 50px;
+        z-index: 1;
+
+        .option-btn-wrapper {
+            position: relative;
+            right: 10px;
+        }
+
+        .option-btn {
+            width: 55px;
+            height: 24px;
+            border-radius: 12px;
+            background-image: linear-gradient(to bottom, #76777c, #414247);
+            background-image: -webkit-linear-gradient(to bottom, #76777c, #414247);
+            box-shadow: 1px 1px 5px 1px rgba(#000, .5);
+            transform: rotate(-45deg);
+            margin-bottom: 18px;
+        }
+        .option-label {
+            color: #7d7c8e;
+        }
     }
 }
